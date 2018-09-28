@@ -11,9 +11,10 @@ namespace ApiTeste20180928.Controllers
     {
         // GET api/values/5
         [HttpGet("{id}")]
-        public string Get(int id)
+        public IActionResult Get(int id)
         {
-            return $"Você digitou o número {id}.";
+            if (id <= 0) return StatusCode(400, "Informe um número maior que zero!");
+            return StatusCode(200, $"Você digitou o número {id}.");
         }
     }
 }
