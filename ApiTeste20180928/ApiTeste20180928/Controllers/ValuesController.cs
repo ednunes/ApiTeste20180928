@@ -10,11 +10,20 @@ namespace ApiTeste20180928.Controllers
     public class ValuesController : Controller
     {
         // GET api/values/5
+        [Route("GetNumeroMultiplicadoPorEleMesmo")]
         [HttpGet("{id}")]
-        public IActionResult Get(int id)
+        public IActionResult GetNumeroMultiplicadoPorEleMesmo(int id)
+        {
+            return StatusCode(200, $"O número {id} multiplicado por ele mesmo é igual a {id*id}.");
+        }
+
+        // POST api/values/ValidarNumero
+        [Route("ValidarNumero")]
+        [HttpGet("{id}")]
+        public IActionResult ValidarNumero(int id)
         {
             if (id <= 0) return StatusCode(400, "Informe um número maior que zero!");
-            return StatusCode(200, $"Você digitou o número {id}.");
+            return StatusCode(200, id);
         }
     }
 }
